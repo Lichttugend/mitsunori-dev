@@ -1,0 +1,41 @@
+/* ================================
+   Theme Toggle Styles
+   ================================ */
+
+/* Toggle button */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* アイコン画像 */
+.theme-toggle img {
+  max-width: 32px;      /* 最大サイズだけ指定 */
+  max-height: 32px;
+  width: auto;          /* 比率を維持 */
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle img:hover {
+  transform: scale(1.2);
+}
+
+/* Light mode colors */
+body.light-mode {
+  background: #ffffff;
+  color: #000000;
+}
+
+/* Dark mode colors */
+body.dark-mode {
+  background: #111111;
+  color: #eeeeee;
+}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home – Mitsunori.dev{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/neon.css' %}"> 
+{% endblock %}
+
+{% block content %}
+<div class="home-container">
+  <div class="home-text">
+    <div class="site-title">
+      <img src="{% static 'images/logo.png' %}" alt="logo" class="site-logo">
+      <h1>Mitsunori.dev</h1>
+    </div>
+    <span class="badge">Built with Django</span>
+  </div>
+</div>
+<div class="neon-animation"></div>
+
+
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'js/neon.js' %}"></script>
+{% endblock %}

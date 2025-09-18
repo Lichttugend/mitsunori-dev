@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %} 
+{% block title %}Blog - mitsunori.dev{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="blog-container">
+  <div class="main-content">
+    {% for post in page_obj %}
+      <div class="post-item">
+        <div class="post-image">
+          {% if post.image %}
+            <img src="{{ post.image.url }}" alt="{{ post.title }}">
+          {% else %}
+            <img src="{% static 'images/default.jpg' %}" alt="default image">
+          {% endif %}
+        </div>
+        <div class="post-content">
+          <h2><a href="{% url 'blog:post_detail' post.id %}">{{ post.title }}</a></h2>
+          <p>{{ post.content|truncatewords:20|safe }}</p>
+        </div>
+      </div>
+    {% empty %}
+      <p>No posts found.</p>
+    {% endfor %}
+  </div>
+
+  <aside class="sidebar">
+    <div class="search-box">
+      <form method="get" action="">
+        <input type="text" name="q" placeholder="Search..." value="{{ q }}">
+        <button type="submit" class="search-btn">
+          <img src="{% static 'images/search.png' %}" alt="Search" class="search-icon">
+        </button>
+      </form>
+    </div>
+
+    <div class="categories">
+      <h3>Categories</h3>
+      <ul>
+        {% for category in categories %}
+          <li>{{ category.name }}</li>
+        {% empty %}
+          <li>No categories yet.</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="tags">
+      <h3>Tags</h3>
+      <ul>
+        {% for tag in tags %}
+          <li>{{ tag.name }}</li>
+        {% empty %}
+          <li>No tags yet.</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </aside>
+</div>
+<!-- ✅ Pagination (Always show buttons) -->
+<div class="pagination-wrapper">
+    {% if page_obj.has_previous %}
+      <a class="page-btn prev" 
+         href="?page={{ page_obj.previous_page_number }}{% if q %}&q={{ q|urlencode }}{% endif %}">
+        Previous
+      </a>
+    {% else %}
+      <span class="page-btn prev disabled">Previous</span>
+    {% endif %}
+  
+    {% if page_obj.has_next %}
+      <a class="page-btn next" 
+         href="?page={{ page_obj.next_page_number }}{% if q %}&q={{ q|urlencode }}{% endif %}">
+        Next
+      </a>
+    {% else %}
+      <span class="page-btn next disabled">Next</span>
+    {% endif %}
+  </div>
+{% endblock %}
+

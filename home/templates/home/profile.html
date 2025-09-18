@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Profile – Mitsunori.dev{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+  
+  <!-- Left side: Photo -->
+  <div class="profile-photo">
+    <img src="{% static 'images/profile.jpg' %}" alt="Mitsunori Ito">
+  </div>
+
+  <!-- Right side: Text -->
+  <div class="profile-text">
+    <h1 class="jp-name">伊藤 光德</h1>
+    <p>Hello, my name is Mitsunori Ito.</p>
+    <p>
+      I am currently residing in Berlin and pursuing a degree in Information Management at an online
+      university in Japan, while working toward my goal of becoming an AI application engineer.
+    </p>
+    <p>
+      This website, developed with Django, is intended to serve both as a record of my learning process and
+      as a portfolio to present the projects I have created.
+    </p>
+    <p>
+      The primary focus of this blog will be on web development with Django, mobile application development
+      with React Native, and the practical applications of artificial intelligence.
+    </p>
+    <p>
+      My aim is to provide content that may offer value to those embarking on a career in the IT industry or
+      considering a professional transition into this field.
+    </p>
+    <p>
+      Thank you for visiting, and I look forward to sharing my progress and insights here.
+    </p>
+
+    <h2>Skills</h2>
+    <ul>
+      <li>Python / Django</li>
+      <li>PostgreSQL</li>
+    </ul>
+
+    <h2>Languages</h2>
+    <ul>
+      <li>Japanese — Native</li>
+      <li>German — B2 (Upper Intermediate)</li>
+      <li>English — B1 (Intermediate)</li>
+      <li>Norwegian — Beginner (studying as a hobby)</li>
+    </ul>
+
+    <h2>SNS</h2>
+    <div class="social-links">
+      <a href="https://github.com/lichttugend" target="_blank">
+        <img src="{% static 'icons/github.png' %}" alt="GitHub" class="social-icon">
+      </a>
+      <a href="https://linkedin.com/in/mitsunoriito" target="_blank">
+        <img src="{% static 'icons/linkedin.png' %}" alt="LinkedIn" class="social-icon">
+      </a>
+      <a href="https://www.instagram.com/lichttugend" target="_blank">
+        <img src="{% static 'icons/instagram.png' %}" alt="Instagram" class="social-icon">
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

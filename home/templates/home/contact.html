@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contact – Mitsunori.dev{% endblock %}
+
+{% block content %}
+  <div class="form-wrapper">
+    <div class="form-container">
+      <h2 style="margin-bottom: 10px; text-align:center;">Contact</h2>
+      <p style="text-align:center;">If you would like to get in touch, please fill out the form below.</p>
+
+      <form class="form" method="post">
+        {% csrf_token %}
+        
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" placeholder="Write your message..." required></textarea>
+        </div>
+
+        <button class="form-submit-btn" type="submit">Send</button>
+      </form>
+
+      {% if messages %}
+      <div class="success-message">
+        {% for message in messages %}
+          <p>{{ message }}</p>
+        {% endfor %}
+      </div>
+     {% endif %}
+
+      <p style="font-size: 0.9rem; margin-top: 15px; opacity: 0.7; text-align:center;">
+        * Currently using a temporary email forwarding system. <br>
+        Official domain email will be enabled upon full launch.
+      </p>
+    </div>
+  </div>
+
+{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
