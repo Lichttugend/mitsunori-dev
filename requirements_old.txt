@@ -1,0 +1,14 @@
+Django>=5.2,<6.0
+gunicorn
+whitenoise
+dj-database-url
+psycopg[binary]
+
+# Optional project dependencies
+django-ckeditor
+django-js-asset
+pillow
+python-dotenv
+sqlparse
+asgiref
+packaging
