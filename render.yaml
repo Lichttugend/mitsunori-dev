@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: mitsunori-dev
+    env: python
+    plan: free
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn config.wsgi:application"
+
+databases:
+  - name: mitsunori-postgres
