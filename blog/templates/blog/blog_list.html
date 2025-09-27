@@ -11,7 +11,7 @@
   <div class="main-content">
     {% for post in page_obj %}
 
-      <a href="{% url 'blog:post_detail' post.id %}" class="post-link">
+      <a href="{% url 'blog:blog_detail' post.id %}" class="post-link">
         <div class="post-item">
           <div class="post-image">
             {% if post.image %}

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ post.title }} - mitsunori.dev{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/blog_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="blog-container">
+  <!-- Main content -->
+  <div class="main-content">
+    <div class="post-detail">
+      <div class="post-image">
+        {% if post.image %}
+          <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-detail-image">
+        {% else %}
+          <img src="{% static 'images/default.jpg' %}" alt="default image" class="post-detail-image">
+        {% endif %}
+      </div>
+      <div class="post-content">
+        <h1>{{ post.title }}</h1>
+        <div class="post-meta">
+          <span>{{ post.created_at|date:"F d, Y" }}</span>
+        </div>
+        <div class="post-body">
+          {{ post.content|safe }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="search-box">
+      <form method="get" action="">
+        <input type="text" name="q" placeholder="Search..." value="{{ q }}">
+        <button type="submit" class="search-btn">
+          <img src="{% static 'images/search.png' %}" alt="Search" class="search-icon">
+        </button>
+      </form>
+    </div>
+
+    <div class="categories">
+      <h3>Categories</h3>
+      <ul>
+        {% for category in categories %}
+          <li>{{ category.name }}</li>
+        {% empty %}
+          <li>No categories yet.</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="tags">
+      <h3>Tags</h3>
+      <ul>
+        {% for tag in tags %}
+          <li>{{ tag.name }}</li>
+        {% empty %}
+          <li>No tags yet.</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </aside>
+</div>
+{% endblock %}
