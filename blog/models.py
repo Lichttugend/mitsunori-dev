@@ -1,3 +1,5 @@
+import uuid
+import os
 from django.db import models
 from django.utils.text import slugify
 from ckeditor_uploader.fields import RichTextUploadingField
@@ -16,10 +18,21 @@ class Tag(models.Model):
         return self.name
 
 
+def upload_to(instance, filename):
+    ext = filename.split('.')[-1]
+    new_filename = f"{uuid.uuid4().hex}.{ext}"
+    return f"post_images/{new_filename}"
+
+
 class Post(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True, blank=True)
-    image = CloudinaryField('image', blank=True, null=True)
+    image = CloudinaryField(
+        'image',
+        folder="post_images",
+        blank=True,
+        null=True
+    )
     content = RichTextUploadingField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
