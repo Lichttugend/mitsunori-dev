@@ -2,74 +2,168 @@
    Blog Detail Layout
    =========================== */
    .blog-detail-container {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 20px;
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.main-content {
+    flex: 3;
     background: rgba(20, 20, 20, 0.85);
+    padding: 20px;
     border-radius: 12px;
+    box-shadow: 0 0 10px rgba(255,255,255,0.3),
+                0 0 20px rgba(255,255,255,0.2);
+    color: var(--text-color);
+}
+
+/* ===== Blog Detail Content ===== */
+.post-detail {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+.post-detail h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--link-color);
+}
+
+.post-detail .post-meta {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-bottom: 20px;
+}
+
+/* ===== Blog Image ===== */
+.post-detail .post-image {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.post-detail .post-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(255,255,255,0.3),
                 0 0 20px rgba(255,255,255,0.2);
 }
 
-/* --- Title --- */
-.blog-detail-container h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    text-align: center;
-    color: var(--text-color);
-}
-
-/* --- Meta Info --- */
-.post-meta {
-    font-size: 0.9rem;
-    color: gray;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-/* --- Featured Image --- */
-.post-detail-image {
-    max-width: 100%;
-    max-height: 500px;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto 20px auto;
-    border-radius: 10px;
-    box-shadow: 0 0 12px rgba(0,0,0,0.3);
-}
-
-/* --- Post Content --- */
-.post-detail-content {
-    font-size: 1.05rem;
+/* ===== Blog Content ===== */
+.post-detail .content {
+    font-size: 1rem;
     line-height: 1.8;
+}
+
+/* ===========================
+   Sidebar
+   =========================== */
+.sidebar {
+    flex: 1;
+    background: rgba(20, 20, 20, 0.85);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(255,255,255,0.3),
+                0 0 20px rgba(255,255,255,0.2);
     color: var(--text-color);
-    padding: 10px 0;
+    margin-top: 20px;
 }
 
-/* --- Dark Mode --- */
-body.dark-mode .blog-detail-container {
-    background: rgba(30, 30, 30, 0.9);
-    border: 2px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 10px rgba(255,255,255,0.4),
-                0 0 20px rgba(255,255,255,0.3);
-}
-
-body.dark-mode .post-detail-image {
-    box-shadow: 0 0 15px rgba(255,255,255,0.5);
-}
-
-body.dark-mode .post-detail-content {
-    color: #ddd;
-}
-
-/* --- Light Mode --- */
-body.light-mode .blog-detail-container {
-    background: rgba(255, 255, 255, 0.85);
+/* Light Mode */
+body.light-mode .sidebar {
     border: 2px solid rgba(0, 0, 0, 0.6);
+    background: rgba(255, 255, 255, 0.9);
     box-shadow: 0 0 8px rgba(0,0,0,0.3),
                 inset 0 2px 6px rgba(0,0,0,0.2);
 }
 
-body.light-mode .post-detail-image {
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+/* Dark Mode */
+body.dark-mode .sidebar {
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    background: rgba(30, 30, 30, 0.95);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.4),
+                inset 0 2px 6px rgba(255, 255, 255, 0.2);
+}
+
+.sidebar h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 6px;
+    margin-bottom: 12px;
+}
+
+/* ===========================
+   Search Box
+   =========================== */
+.search-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-box input[type="text"] {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px 0 0 6px;
+    font-size: 14px;
+    height: 36px;
+    box-sizing: border-box;
+}
+
+.search-box .search-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #cecece;
+    border: none;
+    padding: 0;
+    width: 40px;
+    height: 36px;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+}
+
+.search-box .search-btn:hover {
+    background: #555;
+}
+
+/* ✅ Fix for Search Icon */
+.search-box .search-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    display: block;
+}
+
+/* ===========================
+   Categories & Tags
+   =========================== */
+.categories ul,
+.tags ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+}
+
+.categories li,
+.tags li {
+    margin-bottom: 6px;
+}
+
+.categories a,
+.tags a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.categories a:hover,
+.tags a:hover {
+    text-decoration: underline;
+    color: var(--link-hover);
 }
