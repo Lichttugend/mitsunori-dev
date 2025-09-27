@@ -22,7 +22,7 @@ def blog_list(request):
         "tags": tags,
         "q": q,
     }
-    return render(request, "blog_list.html", context)
+    return render(request, "blog/blog_list.html", context)
 
 
 def blog_detail(request, pk):
@@ -35,4 +35,4 @@ def blog_detail(request, pk):
         "categories": categories,
         "tags": tags,
     }
-    return render(request, "blog_detail.html", context)
+    return render(request, "blog/blog_detail.html", context)
