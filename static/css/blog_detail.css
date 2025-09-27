@@ -1,0 +1,75 @@
+/* ===========================
+   Blog Detail Layout
+   =========================== */
+   .blog-detail-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: rgba(20, 20, 20, 0.85);
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(255,255,255,0.3),
+                0 0 20px rgba(255,255,255,0.2);
+}
+
+/* --- Title --- */
+.blog-detail-container h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--text-color);
+}
+
+/* --- Meta Info --- */
+.post-meta {
+    font-size: 0.9rem;
+    color: gray;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* --- Featured Image --- */
+.post-detail-image {
+    max-width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.3);
+}
+
+/* --- Post Content --- */
+.post-detail-content {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    padding: 10px 0;
+}
+
+/* --- Dark Mode --- */
+body.dark-mode .blog-detail-container {
+    background: rgba(30, 30, 30, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 10px rgba(255,255,255,0.4),
+                0 0 20px rgba(255,255,255,0.3);
+}
+
+body.dark-mode .post-detail-image {
+    box-shadow: 0 0 15px rgba(255,255,255,0.5);
+}
+
+body.dark-mode .post-detail-content {
+    color: #ddd;
+}
+
+/* --- Light Mode --- */
+body.light-mode .blog-detail-container {
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 8px rgba(0,0,0,0.3),
+                inset 0 2px 6px rgba(0,0,0,0.2);
+}
+
+body.light-mode .post-detail-image {
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
