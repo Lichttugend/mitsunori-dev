@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Portfolio – Mitsunori.dev{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/portfolio_list.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="portfolio-container">
+  <h2>Portfolio</h2>
+  <p>Here are some selected projects showcasing my skills in web and mobile development.</p>
+
+  <div class="portfolio-grid">
+    {% for portfolio in portfolios %}
+      <a href="{% url 'portfolio:portfolio_detail' portfolio.slug %}" class="portfolio-link">
+        <div class="portfolio-item">
+          {% if portfolio.image %}
+            <img src="{{ portfolio.image.url }}" alt="{{ portfolio.title }}">
+          {% else %}
+            <img src="{% static 'images/default.jpg' %}" alt="default image">
+          {% endif %}
+          <h3>{{ portfolio.title }}</h3>
+          <p>{{ portfolio.description|truncatewords:20 }}</p>
+
+          <div class="portfolio-links">
+            {% if portfolio.github_url %}
+              <a href="{{ portfolio.github_url }}" target="_blank" onclick="event.stopPropagation();">
+                <img src="{% static 'icons/github.png' %}" alt="GitHub">
+              </a>
+            {% endif %}
+            {% if portfolio.live_demo_url %}
+              <a href="{{ portfolio.live_demo_url }}" target="_blank" onclick="event.stopPropagation();">
+                <img src="{% static 'icons/external-link.png' %}" alt="Live Demo">
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </a>
+    {% empty %}
+      <p>No portfolio items yet.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

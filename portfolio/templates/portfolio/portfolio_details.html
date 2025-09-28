@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ portfolio.title }} – Portfolio{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/portfolio_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="portfolio-detail">
+  <h2>{{ portfolio.title }}</h2>
+
+  {% if portfolio.image %}
+    <img src="{{ portfolio.image.url }}" alt="{{ portfolio.title }}" class="portfolio-image">
+  {% endif %}
+
+  <p>{{ portfolio.description }}</p>
+
+  <div class="portfolio-links">
+    {% if portfolio.github_url %}
+      <a href="{{ portfolio.github_url }}" target="_blank">
+        <img src="{% static 'icons/github.png' %}" alt="GitHub">
+      </a>
+    {% endif %}
+    {% if portfolio.live_demo_url %}
+      <a href="{{ portfolio.live_demo_url }}" target="_blank">
+        <img src="{% static 'icons/external-link.png' %}" alt="Live Demo">
+      </a>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

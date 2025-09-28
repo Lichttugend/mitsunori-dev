@@ -11,7 +11,7 @@ def profile(request):
     return render(request, "home/profile.html")
 
 def portfolio(request):
-    return render(request, "home/portfolio.html")
+    return render(request, "home/portfolio_list.html")
     
 def privacy(request):
     return render(request, "home/privacy.html")

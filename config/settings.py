@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "home",
     'cloudinary',
     'cloudinary_storage',
+    "portfolio",
 ]
 
 MIDDLEWARE = [

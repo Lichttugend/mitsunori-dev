@@ -135,3 +135,32 @@ body.dark-mode .sidebar {
     object-fit: contain;
     display: block;
 }
+
+/* ===========================
+   Categories & Tags
+   =========================== */
+   .categories ul,
+   .tags ul {
+       list-style: none;
+       padding: 0;
+       margin: 0 0 20px;
+   }
+   
+   .categories li,
+   .tags li {
+       margin-bottom: 6px;
+   }
+   
+   .categories a,
+   .tags a {
+       color: var(--link-color);
+       text-decoration: none;
+       font-size: 14px;
+   }
+   
+   .categories a:hover,
+   .tags a:hover {
+       text-decoration: underline;
+       color: var(--link-hover);
+   }
+   
