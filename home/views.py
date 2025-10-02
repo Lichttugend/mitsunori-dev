@@ -3,9 +3,16 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 from django.contrib import messages
 from .forms import ContactForm
+from blog.models import Post
+from portfolio.models import Portfolio
 
 def home(request):
-    return render(request, "home/home.html")
+    latest_blog = Post.objects.order_by('-created_at').first()
+    latest_portfolio = Portfolio.objects.order_by('-created_at').first()
+    return render(request, "home/home.html", {
+        "latest_blog": latest_blog,
+        "latest_portfolio": latest_portfolio,
+    })
 
 def profile(request):
     return render(request, "home/profile.html")

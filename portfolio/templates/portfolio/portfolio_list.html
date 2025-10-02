@@ -16,11 +16,16 @@
     {% for portfolio in portfolios %}
       <a href="{% url 'portfolio:portfolio_detail' portfolio.slug %}" class="portfolio-link">
         <div class="portfolio-item">
+          <!-- === Category Label === -->
+          <span class="portfolio-label">Portfolio</span>
+          <!-- ===================== -->
+
           {% if portfolio.image %}
             <img src="{{ portfolio.image.url }}" alt="{{ portfolio.title }}">
           {% else %}
             <img src="{% static 'images/default.jpg' %}" alt="default image">
           {% endif %}
+
           <h3>{{ portfolio.title }}</h3>
           <p>{{ portfolio.description|truncatewords:20 }}</p>
 

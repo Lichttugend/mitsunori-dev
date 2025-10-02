@@ -1,5 +1,5 @@
 /* ===========================
-   Home Page
+   Home Page Layout
    =========================== */
    .home-container {
     display: flex;
@@ -9,8 +9,14 @@
     text-align: center;
     gap: 20px;
     margin-top: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
   }
   
+  /* ===========================
+     Site Title & Logo
+     =========================== */
   .site-title {
     display: flex;
     align-items: center;
@@ -29,48 +35,42 @@
     font-weight: 800;
     color: var(--text-color);
     margin: 0;
+    transition: text-shadow 0.3s ease;
   }
-
+  
   /* ===========================
-   Site Title & Logo Neon Effect
-   =========================== */
-
-/* 共通スタイル */
-.site-title h1,
-.site-title .site-logo {
-    transition: text-shadow 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* ダークモード → 白ネオン */
-body.dark-mode .site-title h1 {
+     Neon Effect
+     =========================== */
+  /* Dark mode → white glow */
+  body.dark-mode .site-title h1 {
     text-shadow: 
-        0 0 6px rgba(255, 255, 255, 0.8),
-        0 0 12px rgba(255, 255, 255, 0.6),
-        0 0 18px rgba(255, 255, 255, 0.4);
-}
-
-body.dark-mode .site-title .site-logo {
+      0 0 6px rgba(255, 255, 255, 0.8),
+      0 0 12px rgba(255, 255, 255, 0.6),
+      0 0 18px rgba(255, 255, 255, 0.4);
+  }
+  body.dark-mode .site-logo {
     filter: drop-shadow(0 0 6px rgba(255,255,255,0.8))
             drop-shadow(0 0 12px rgba(255,255,255,0.6))
             drop-shadow(0 0 18px rgba(255,255,255,0.4));
-}
-
-/* ライトモード → 黒ネオン */
-body.light-mode .site-title h1 {
+  }
+  
+  /* Light mode → black glow */
+  body.light-mode .site-title h1 {
     text-shadow: 
-        0 0 6px rgba(0, 0, 0, 0.8),
-        0 0 12px rgba(0, 0, 0, 0.6),
-        0 0 18px rgba(0, 0, 0, 0.4);
-}
-
-body.light-mode .site-title .site-logo {
+      0 0 6px rgba(0, 0, 0, 0.8),
+      0 0 12px rgba(0, 0, 0, 0.6),
+      0 0 18px rgba(0, 0, 0, 0.4);
+  }
+  body.light-mode .site-logo {
     filter: drop-shadow(0 0 6px rgba(0,0,0,0.8))
             drop-shadow(0 0 12px rgba(0,0,0,0.6))
             drop-shadow(0 0 18px rgba(0,0,0,0.4));
-}
+  }
   
-/* Badge (Built with Django) */
-.badge {
+  /* ===========================
+     Badge (Built with Django)
+     =========================== */
+  .badge {
     display: inline-block;
     padding: 10px 18px;
     font-size: 15px;
@@ -79,9 +79,6 @@ body.light-mode .site-title .site-logo {
     transition: all 0.3s ease;
     backdrop-filter: blur(4px);
     border: 2px solid transparent;
-    box-shadow: 0 0 8px rgba(255,255,255,0.3),
-                0 0 16px rgba(255,255,255,0.2),
-                inset 0 0 6px rgba(255,255,255,0.2);
   }
   
   /* Light mode badge */
@@ -104,4 +101,142 @@ body.light-mode .site-title .site-logo {
                 0 0 16px rgba(255,255,255,0.4),
                 inset 0 0 6px rgba(255,255,255,0.3);
     text-shadow: 0 0 6px rgba(255,255,255,0.8);
+  }
+  
+  /* ===========================
+     Blog & Portfolio Grid
+     =========================== */
+  .home-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columns */
+    gap: 20px;
+    margin-top: 30px;
+    width: 100%;
+  }
+  
+  /* Responsive: stack vertically on mobile */
+  @media (max-width: 768px) {
+    .home-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .home-card h3 {
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
+  .home-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* ← Center */
+  }
+  
+  .section-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  /* ===========================
+   Section Titles above cards
+   =========================== */
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-align: center;
+  transition: text-shadow 0.3s ease;
+}
+
+/* Neon effect - Dark mode (white glow) */
+body.dark-mode .section-title {
+  color: #fff;
+  text-shadow: 
+    0 0 6px rgba(255,255,255,0.8),
+    0 0 12px rgba(255,255,255,0.6),
+    0 0 18px rgba(255,255,255,0.4);
+}
+
+/* Neon effect - Light mode (black glow) */
+body.light-mode .section-title {
+  color: #111;
+  text-shadow: 
+    0 0 6px rgba(0,0,0,0.8),
+    0 0 12px rgba(0,0,0,0.6),
+    0 0 18px rgba(0,0,0,0.4);
+}
+
+/* link inside section title */
+.section-title a {
+  text-decoration: none;
+  color: inherit;
+}
+.section-title a:hover {
+  text-decoration: underline;
+}
+  
+  /* ===========================
+     Card Design (with neon borders)
+     =========================== */
+  .card {
+    background: var(--bg-color);
+    border-radius: 12px;
+    padding: 15px;
+    text-align: left;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+    border: 2px solid transparent;
+  }
+  
+  /* Light Mode card */
+  body.light-mode .card {
+    border-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 
+      0 0 6px rgba(0, 0, 0, 0.4),
+      0 0 12px rgba(0, 0, 0, 0.3),
+      inset 0 0 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Dark Mode card */
+  body.dark-mode .card {
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 
+      0 0 6px rgba(255, 255, 255, 0.5),
+      0 0 12px rgba(255, 255, 255, 0.3),
+      inset 0 0 6px rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Hover effects */
+  .card:hover {
+    transform: translateY(-4px);
+  }
+  body.light-mode .card:hover {
+    box-shadow:
+      0 0 8px rgba(0, 0, 0, 0.6),
+      0 0 16px rgba(0, 0, 0, 0.4),
+      inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+  body.dark-mode .card:hover {
+    box-shadow:
+      0 0 8px rgba(255, 255, 255, 0.7),
+      0 0 16px rgba(255, 255, 255, 0.5),
+      inset 0 0 6px rgba(255, 255, 255, 0.3);
+  }
+  
+  .card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .card h4 {
+    margin: 10px 0;
+  }
+  
+  .card p {
+    font-size: 0.9rem;
+    line-height: 1.4;
   }

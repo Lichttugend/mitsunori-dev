@@ -25,8 +25,8 @@ def blog_list(request):
     return render(request, "blog/blog_list.html", context)
 
 
-def blog_detail(request, pk):
-    post = get_object_or_404(Post, pk=pk)
+def blog_detail(request, pk, slug):
+    post = get_object_or_404(Post, pk=pk, slug=slug)
     categories = Category.objects.all()
     tags = Tag.objects.all()
 
@@ -35,4 +35,4 @@ def blog_detail(request, pk):
         "categories": categories,
         "tags": tags,
     }
-    return render(request, "blog/blog_detail.html", context)
+    return render(request, "blog/blog_detail.html", context,{"post": post})
