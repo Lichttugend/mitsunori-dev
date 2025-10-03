@@ -12,47 +12,50 @@
   <div class="home-text">
     <div class="site-title">
       <img src="{% static 'images/logo.png' %}" alt="logo" class="site-logo">
-      <!-- For neon effect -->
       <h1 class="neon-text">Mitsunori.dev</h1>
     </div>
-    <span class="badge">Built with Django</span>
   </div>
 
   <div class="home-grid">
     <!-- Latest Blog -->
     <div class="home-card">
       <h3 class="section-title"><a href="{% url 'blog:blog_list' %}">Blog</a></h3>
-      <div class="card">
-        {% if latest_blog %}
-          <a href="{% url 'blog:blog_detail' latest_blog.slug %}" class="card-link">
+      {% if latest_blog %}
+        <a href="{% url 'blog:blog_detail' latest_blog.slug %}" class="card-link">
+          <div class="card">
             {% if latest_blog.image %}
               <img src="{{ latest_blog.image.url }}" alt="{{ latest_blog.title }}">
             {% endif %}
             <h4>{{ latest_blog.title }}</h4>
             <p>{{ latest_blog.content|truncatewords:20 }}</p>
-          </a>
-        {% else %}
+          </div>
+        </a>
+      {% else %}
+        <div class="card">
           <p>No blog posts yet.</p>
-        {% endif %}
-      </div>
+        </div>
+      {% endif %}
     </div>
   
     <!-- Latest Portfolio -->
     <div class="home-card">
       <h3 class="section-title"><a href="{% url 'portfolio:portfolio_list' %}">Portfolio</a></h3>
-      <div class="card">
-        {% if latest_portfolio %}
-          <a href="{% url 'portfolio:portfolio_detail' latest_portfolio.slug %}" class="card-link">
+      {% if latest_portfolio %}
+        <a href="{% url 'portfolio:portfolio_detail' latest_portfolio.slug %}" class="card-link">
+          <div class="card">
             {% if latest_portfolio.image %}
               <img src="{{ latest_portfolio.image.url }}" alt="{{ latest_portfolio.title }}">
             {% endif %}
             <h4>{{ latest_portfolio.title }}</h4>
             <p>{{ latest_portfolio.description|truncatewords:20 }}</p>
-          </a>
-        {% else %}
+          </div>
+        </a>
+      {% else %}
+        <div class="card">
           <p>No portfolio items yet.</p>
-        {% endif %}
-      </div>
+        </div>
+      {% endif %}
     </div>
   </div>
-  {% endblock %}
+</div>
+{% endblock %}

@@ -11,23 +11,20 @@
   <div class="main-content">
     {% for post in page_obj %}
       <div class="post-item">
-        <div class="post-image">
-          {% if post.image %}
-            <a href="{% url 'blog:blog_detail' post.slug %}">
+        <!-- カード全体にリンクを被せる -->
+        <a href="{% url 'blog:blog_detail' post.slug %}" class="post-link">
+          <div class="post-image">
+            {% if post.image %}
               <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-list-image">
-            </a>
-          {% else %}
-            <a href="{% url 'blog:blog_detail' post.slug %}">
+            {% else %}
               <img src="{% static 'images/default.jpg' %}" alt="default image" class="post-list-image">
-            </a>
-          {% endif %}
-        </div>
-        <div class="post-content">
-          <h2>
-            <a href="{% url 'blog:blog_detail' post.slug %}">{{ post.title }}</a>
-          </h2>
-          <p>{{ post.content|truncatewords:20|safe }}</p>
-        </div>
+            {% endif %}
+          </div>
+          <div class="post-content">
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.content|truncatewords:20|safe }}</p>
+          </div>
+        </a>
       </div>
     {% empty %}
       <p>No posts found.</p>

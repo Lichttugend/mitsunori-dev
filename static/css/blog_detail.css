@@ -1,166 +1,219 @@
 /* ===========================
-   Blog Detail Layout
+   Global Fix for Overflow
    =========================== */
-   .blog-container {
+   * {
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+  
+  /* ===========================
+     Blog Detail Layout
+     =========================== */
+  .blog-container {
     display: flex;
     gap: 30px;
     align-items: flex-start;
-    margin-top: 20px;
-}
-
-.main-content {
+    margin: 40px auto 0;
+    width: 100%;
+    max-width: 1200px;
+    overflow: visible;
+  }
+  
+  .main-content {
     flex: 3;
-}
-
-.sidebar {
+    width: 100%;
+  }
+  
+  .sidebar {
     flex: 1;
-    padding: 20px;
-    margin-top: 20px;
     border-radius: 12px;
-    transition: all 0.3s ease;
-}
-
-/* ===========================
-   Post Detail
-   =========================== */
-.post-detail {
-    background: rgba(20, 20, 20, 0.85);
+    padding: 15px;
+    width: 100%;
+  }
+  
+  /* 📱 Mobile (縦並び) */
+  @media (max-width: 768px) {
+    .blog-container {
+      display: block;
+      width: 100%;
+      padding: 0 10px;
+    }
+  
+    .main-content,
+    .sidebar {
+      width: 100%;
+    }
+  
+    .sidebar {
+      margin-top: 20px;
+      padding: 15px;
+    }
+  
+    .sidebar h3 {
+      margin-top: 10px;
+      font-size: 1.1rem;
+    }
+  
+    .sidebar ul {
+      padding-left: 15px;
+    }
+  }
+  
+  /* ===========================
+     Post Detail
+     =========================== */
+  .post-detail {
     border-radius: 12px;
     overflow: hidden;
-    margin: 0 auto 30px auto;
-    box-shadow: 0 0 10px rgba(255,255,255,0.3),
-                0 0 20px rgba(255,255,255,0.2);
+    margin: 10px auto 30px;
     max-width: 800px;
     width: 100%;
     padding: 20px;
-}
-
-.post-detail-image {
+  }
+  
+  .post-detail-image {
     width: 100%;
+    height: auto;
     max-height: 450px;
     object-fit: cover;
     border-radius: 8px;
     display: block;
     margin-bottom: 20px;
-}
-
-.post-content h1 {
+  }
+  
+  .post-content h1 {
     font-size: 1.8rem;
     margin-bottom: 12px;
-    color: #fff;
-}
-
-.post-meta {
+  }
+  
+  .post-meta {
     font-size: 0.9rem;
-    color: #aaa;
     margin-bottom: 20px;
-}
-
-.post-body {
+  }
+  
+  .post-body {
     font-size: 1rem;
     line-height: 1.6;
-    color: #eee;
-}
-
-/* ===========================
-   Sidebar (consistent with blog_list.css)
-   =========================== */
-body.light-mode .sidebar {
-    border: 2px solid rgba(0, 0, 0, 0.6);
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3),
-                inset 0 2px 6px rgba(0, 0, 0, 0.2);
-    background: rgba(255, 255, 255, 0.8);
-}
-
-body.dark-mode .sidebar {
+  }
+  
+  /* ===========================
+     Neon Effect (Sidebar + Post)
+     =========================== */
+  
+  /* Dark mode: 白ネオン */
+  body.dark-mode .sidebar,
+  body.dark-mode .post-detail {
+    background: rgba(30, 30, 30, 0.95);
     border: 2px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.4),
-                inset 0 2px 6px rgba(255, 255, 255, 0.2);
-    background: rgba(30, 30, 30, 0.9);
-}
-
-.sidebar h3 {
+    box-shadow:
+      0 0 12px rgba(255, 255, 255, 0.8),
+      0 0 24px rgba(255, 255, 255, 0.6),
+      0 0 36px rgba(255, 255, 255, 0.4),
+      0 0 48px rgba(255, 255, 255, 0.2);
+    color: #fff;
+  }
+  
+  /* Light mode: 黒ネオン */
+  body.light-mode .sidebar,
+  body.light-mode .post-detail {
+    background: #fff;
+    border: 2px solid rgba(0, 0, 0, 0.7);
+    box-shadow:
+      0 0 12px rgba(0, 0, 0, 0.8),
+      0 0 24px rgba(0, 0, 0, 0.7),
+      0 0 36px rgba(0, 0, 0, 0.6),
+      0 0 48px rgba(0, 0, 0, 0.5);
+    color: #111;
+  }
+  
+  /* Light mode text colors */
+  body.light-mode .post-content h1 { color: #111; }
+  body.light-mode .post-meta { color: #555; }
+  body.light-mode .post-body { color: #222; }
+  
+  /* ===========================
+     Sidebar Inner Elements
+     =========================== */
+  .sidebar h3 {
     margin-top: 0;
     font-size: 1.1rem;
     border-bottom: 1px solid #ccc;
     padding-bottom: 6px;
     margin-bottom: 12px;
-}
-
-/* ===========================
-   Search Box
-   =========================== */
-.search-box form {
-    display: flex;
-    align-items: center;
-    margin: 0;
-}
-
-.search-box {
+  }
+  
+  /* ===========================
+     Search Box
+     =========================== */
+  .search-box {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-}
-
-.search-box input[type="text"] {
+    width: 100%;
+  }
+  
+  .search-box form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .search-box input[type="text"] {
     flex: 1;
     padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 6px 0 0 6px;
     font-size: 14px;
     height: 36px;
-    box-sizing: border-box;
-}
-
-.search-box .search-btn {
+  }
+  
+  .search-box .search-btn {
     display: flex;
     align-items: center;
     justify-content: center;
     background: #cecece;
     border: none;
-    padding: 0;
     width: 40px;
     height: 36px;
     border-radius: 0 6px 6px 0;
     cursor: pointer;
-}
-
-.search-box .search-btn:hover {
+  }
+  
+  .search-box .search-btn:hover {
     background: #555;
-}
-
-.search-box .search-icon {
+  }
+  
+  .search-box .search-icon {
     width: 18px;
     height: 18px;
     object-fit: contain;
     display: block;
-}
-
-/* ===========================
-   Categories & Tags
-   =========================== */
-   .categories ul,
-   .tags ul {
-       list-style: none;
-       padding: 0;
-       margin: 0 0 20px;
-   }
-   
-   .categories li,
-   .tags li {
-       margin-bottom: 6px;
-   }
-   
-   .categories a,
-   .tags a {
-       color: var(--link-color);
-       text-decoration: none;
-       font-size: 14px;
-   }
-   
-   .categories a:hover,
-   .tags a:hover {
-       text-decoration: underline;
-       color: var(--link-hover);
-   }
-   
+  }
+  
+  /* ===========================
+     Categories & Tags
+     =========================== */
+  .categories ul,
+  .tags ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+  }
+  
+  .categories li,
+  .tags li {
+    margin-bottom: 6px;
+  }
+  
+  .categories a,
+  .tags a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .categories a:hover,
+  .tags a:hover {
+    text-decoration: underline;
+    color: var(--link-hover);
+  }

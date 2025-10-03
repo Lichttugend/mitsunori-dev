@@ -1,22 +1,22 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Profile – Mitsunori.dev{% endblock %}
+{% block title %}About – Mitsunori.dev{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
 {% endblock %}
 
 {% block content %}
-<div class="profile-container">
+<div class="about-container">
   
   <!-- Left side: Photo -->
-  <div class="profile-photo">
+  <div class="about-photo">
     <img src="{% static 'images/profile.jpg' %}" alt="Mitsunori Ito">
   </div>
 
   <!-- Right side: Text -->
-  <div class="profile-text">
+  <div class="about-text">
     <h1 class="jp-name">伊藤 光德</h1>
     <p>Hello, my name is Mitsunori Ito.</p>
     <p>
@@ -24,8 +24,8 @@
       university in Japan, while working toward my goal of becoming an AI application engineer.
     </p>
     <p>
-      This website, developed with Django, is intended to serve both as a record of my learning process and
-      as a portfolio to present the projects I have created.
+      This website is built with <strong>Python & Django</strong>, and serves both as a record of my learning
+      process and as a portfolio to present the projects I have created.
     </p>
     <p>
       The primary focus of this blog will be on web development with Django, mobile application development

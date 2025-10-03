@@ -1,9 +1,9 @@
 /* ===========================
-   Profile Page Styles
+   About Page Styles
    =========================== */
 
 /* Layout */
-.profile-container {
+.about-container {
     display: flex;
     align-items: flex-start;
     gap: 40px;
@@ -19,8 +19,6 @@
     font-size: 2.8rem;
     font-weight: 700;
     letter-spacing: 0.05em;
-    color: #e6e6e6;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
     margin-top: 0;
 }
 
@@ -30,45 +28,45 @@ body.dark-mode .jp-name {
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
 }
   
-  /* Light mode */
+/* Light mode */
 body.light-mode .jp-name {
     color: #222; 
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Profile photo */
-.profile-photo img {
+.about-photo img {
     width: 260px;
     height: auto;
     border-radius: 12px;
     transition: box-shadow 0.3s ease;
 }
 
-/* Dark mode → 白いネオン常時 */
-body.dark-mode .profile-photo img {
+/* Dark mode → 白いネオン */
+body.dark-mode .about-photo img {
     box-shadow: 
-        0 0 8px rgba(255, 255, 255, 0.6),
-        0 0 16px rgba(255, 255, 255, 0.4),
-        0 0 24px rgba(255, 255, 255, 0.2);
+        0 0 12px rgba(255, 255, 255, 0.7),
+        0 0 24px rgba(255, 255, 255, 0.5),
+        0 0 36px rgba(255, 255, 255, 0.3);
 }
 
-/* Light mode → 黒いネオン常時 */
-body.light-mode .profile-photo img {
+/* Light mode → 黒いネオン */
+body.light-mode .about-photo img {
     box-shadow: 
-        0 0 8px rgba(0, 0, 0, 0.6),
-        0 0 16px rgba(0, 0, 0, 0.4),
-        0 0 24px rgba(0, 0, 0, 0.2);
+        0 0 12px rgba(0, 0, 0, 0.7),
+        0 0 24px rgba(0, 0, 0, 0.5),
+        0 0 36px rgba(0, 0, 0, 0.3);
 }
 
 /* Text content */
-.profile-text {
+.about-text {
     flex: 1;
     line-height: 1.7;
     font-size: 1rem;
 }
 
-/* Headings inside profile */
-.profile-text h2 {
+/* Headings */
+.about-text h2 {
     margin-top: 1.6rem;
     font-size: 1.4rem;
     border-bottom: 2px solid #ddd;
@@ -76,12 +74,12 @@ body.light-mode .profile-photo img {
 }
 
 /* List styles */
-.profile-text ul {
+.about-text ul {
     margin: 0.5rem 0 1rem 1.2rem;
     padding: 0;
 }
 
-.profile-text li {
+.about-text li {
     margin-bottom: 0.4rem;
 }
 
@@ -96,14 +94,13 @@ body.light-mode .profile-photo img {
 
 .social-links a {
     display: inline-block;
-    position: relative;
 }
 
 .social-links .social-icon {
     width: 28px;
     height: 28px;
     object-fit: contain;
-    transition: transform 0.2s ease, opacity 0.2s ease, filter 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease, filter 0.3s ease;
     filter: grayscale(100%);
 }
 
@@ -112,11 +109,12 @@ body.light-mode .profile-photo img {
     opacity: 0.9;
     filter: none;
 }
+
 body.dark-mode .social-links .social-icon {
-    filter: drop-shadow(0 0 4px rgba(255,255,255,0.6))
-            drop-shadow(0 0 8px rgba(255,255,255,0.4));
-  }
+    filter: drop-shadow(0 0 6px rgba(255,255,255,0.8))
+            drop-shadow(0 0 12px rgba(255,255,255,0.6));
+}
+
 body.light-mode .social-links .social-icon {
-    filter: grayscale(100%);
-    box-shadow: none;
+    filter: none;
 }

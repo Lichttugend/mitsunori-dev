@@ -14,8 +14,8 @@ def home(request):
         "latest_portfolio": latest_portfolio,
     })
 
-def profile(request):
-    return render(request, "home/profile.html")
+def about(request):
+    return render(request, "home/about.html")
 
 def portfolio(request):
     return render(request, "home/portfolio_list.html")
